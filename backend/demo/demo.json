@@ -16,47 +16,5 @@
       "groups": [],
       "user_permissions": []
     }
-  },
-  {
-    "model": "core.speciality",
-    "pk": 1,
-    "fields": {
-      "name": "Medicina General"
-    }
-  },
-  {
-    "model": "core.speciality",
-    "pk": 2,
-    "fields": {
-      "name": "Pediatría"
-    }
-  },
-  {
-    "model": "core.speciality",
-    "pk": 3,
-    "fields": {
-      "name": "Ginecología"
-    }
-  },
-  {
-    "model": "core.speciality",
-    "pk": 4,
-    "fields": {
-      "name": "Cirugia General"
-    }
-  },
-  {
-    "model": "core.speciality",
-    "pk": 5,
-    "fields": {
-      "name": "Odontología"
-    }
-  },
-  {
-    "model": "core.speciality",
-    "pk": 6,
-    "fields": {
-      "name": "Optometría"
-    }
   }
 ]
