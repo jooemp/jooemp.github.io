@@ -1,0 +1,49 @@
+.fondo {
+  display: block;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+@media (max-width: 690px) {
+  .pre {
+    position: relative;
+    bottom: 100px;
+  }
+}
+@media (min-width: 690px) and (max-width: 790px) {
+  .pre {
+    position: relative;
+    bottom: 160px;
+  }
+}
+@media (min-width: 800px) {
+  .pre {
+    position: relative;
+    bottom: 250px;
+  }
+}
+.boton {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: black;
+  border-color: white;
+  border-radius: 0.3rem;
+  user-select: none;
+  background-color: transparent;
+  border: 4px solid;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.boton:hover {
+  background-color: white;
+  color: black;
+  text-decoration-line: none;
+  border-color: lightsteelblue;  
+}

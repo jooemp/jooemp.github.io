@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<body>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+ <body>
 <div class="container">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+<!--nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
 	    <a class="navbar-brand" href="#">Brand</a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
@@ -44,7 +45,10 @@
 	        {% endif %}
 	      </ul>
 	    </div>
-  	</nav>
+	  </nav-->
+	<nav class="navbar navbar-light bg-light rounded">
+		<a class="navbar-brand" href="{% url 'web:home' %}">LA COMUNIDAD</a>
+	</nav>
 	<main role="main"> 
 {% block container %}
 

@@ -23,7 +23,7 @@ BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 SECRET_KEY = 'ov-#3uy8alwwa#0^og_xi%*v3tbt%uwrcx4jg^zr%^nm*nuyg5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -84,18 +84,18 @@ WSGI_APPLICATION = 'AppWeb.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    '_default': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'da06c9g77gk8i3',
-        'USER': 'dpbenioaztrmsx',
-        'PASSWORD': '44063bffbdfa9ca35f62f0c445a880bc69816c149e4aaafee5ae5a4437502425',
-        'HOST': 'ec2-54-237-135-248.compute-1.amazonaws.com',
-        'PORT': '5432',
     }
+    # '_default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'da06c9g77gk8i3',
+    #     'USER': 'dpbenioaztrmsx',
+    #     'PASSWORD': '44063bffbdfa9ca35f62f0c445a880bc69816c149e4aaafee5ae5a4437502425',
+    #     'HOST': 'ec2-54-237-135-248.compute-1.amazonaws.com',
+    #     'PORT': '5432',
+    # }
 }
 
 
@@ -171,7 +171,7 @@ REST_FRAMEWORK = {
 
 FIXTURES_PATH = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), '../demo')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CONTACT_EMAIL = 'atixbot@gmail.com'
