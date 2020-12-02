@@ -44,125 +44,32 @@
             </div>
             <div class="form-group">
               <label for="weight">Peso</label>
-              <input type="number" step="any" class="form-control" id="weight">
+              <input type="number" step="any" class="form-control" name="weight" id="weight">
             </div>
             <div class="form-group">
               <label for="notes">Observaciones</label>
-              <textarea class="form-control" id="notes" rows="3"></textarea>
+              <textarea class="form-control" name="notes" id="notes" rows="3"></textarea>
             </div>
-            
+            <button class="btn btn-primary">Añadir</button>
           </form>
+        </div>
+        <div class="tab-pane fade show p-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <h1>Hoy {{ today }} vamos juntando {{ donation }} Kg</h1>
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
+
+{% if user.is_superuser %}  
 <div class="position-fixed-bottom bg-white text-center border-top">
   <a class="btn btn-secondary my-2" href="">
     <i class="fas fa-plus"></i>
     {% trans 'Add new Patient' %}
   </a>
 </div>
-
+{% endif %}
 {% endblock %}
 {% block scripts %}
-<script>
-    const table = $('#tableDataTab1');
-    const tableBody = $('#tableBodyDataTab1');
-    const spinner = $('#spinnerAnimationTab1');
 
-    function setIsLoading(isLoading) {
-        if (isLoading) {
-            spinner.show();
-        } else {
-            spinner.hide();
-        }
-    }
-
-    function setIsShowingData(isShowingData) {
-        if (isShowingData) {
-            table.show();
-        } else {
-            table.hide();
-        }
-    }
-
-    function updatetableDataTab1(data, showDateTime) {
-        if (data.length === 0) {
-            tableBody.empty()
-        } else {
-            const rows = []
-            data.forEach(item => {
-                let attentions = '';
-                item.attentions.forEach(attention => {
-                    attentions += `
-                    <tr>
-                      <td class="text-muted" colspan="2">
-                        <div class="d-flex justify-content-between">
-                          <div>{% trans 'speciality' %}: ${attention.speciality}</div>
-                          <div>{% trans 'registered' %}: ${showDateTime ? attention.datetime : attention.time}</div>
-                        </div>
-                      </td>
-                      <td class="text-right">
-                        <a
-                          class="btn btn-secondary text-capitalize"
-                          href="edit-attention/${item.id}/${attention.id}">
-                          {% trans 'edit attention' %}
-                        </a>
-                      </td>
-                    </tr>
-                    `;
-                })
-
-                const row = `
-                <tr class="border-top">
-                  <td>${item.dni}</td>
-                  <td>${item.first_name} ${item.last_name}</td>
-                  <td class="text-right">
-                    <a class="btn btn-link text-capitalize" href="/edit-patient/${item.id}">{% trans 'edit patient' %}</a>
-                    <a class="btn btn-secondary text-capitalize" href="/add-attention/${item.id}">{% trans 'add attention' %}</a>
-                  </td>
-                </tr>
-                ${attentions}
-              `;
-                tableBody.append(row)
-            })
-        }
-    }
-
-    $('#searchPatientsForm').submit(function (e) {
-        e.preventDefault();
-        setIsLoading(true);
-        setIsShowingData(false);
-        updatetableDataTab1([], false);
-        const pattern = $('#pattern').val()
-        $.post(`/search-patient/${pattern}`, function (response) {
-            setIsLoading(false);
-            setIsShowingData(true);
-            updatetableDataTab1(response, true);
-        })
-
-    })
-
-    $('#specialitySelect').change(function (e) {
-        e.preventDefault();
-        setIsLoading(true);
-        setIsShowingData(false);
-        updatetableDataTab1([], false);
-        const pattern = $('#specialitySelect').val()
-        $.post(`/search-patient-advanced/${pattern}`, function (response) {
-            setIsLoading(false);
-            setIsShowingData(true);
-            updatetableDataTab1(response, false);
-        })
-    })
-
-    $('#myTab li a').on('shown.bs.tab', function (e) {
-        setIsShowingData(false);
-        updatetableDataTab1([], false);
-    })
-
-</script>
 {% endblock %}

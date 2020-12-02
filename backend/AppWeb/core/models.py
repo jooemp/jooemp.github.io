@@ -55,8 +55,8 @@ TYPE_PRODUCT = (
 
 class Product(models.Model):
     name = models.IntegerField('Producto', choices=TYPE_PRODUCT, default=6)
-    weight = models.DecimalField(decimal_places=2, max_digits=10, default=0, verbose_name="Peso")
-    notes = models.CharField(max_length=255, verbose_name="Observaciones")
+    weight = models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Peso")
+    notes = models.CharField(max_length=255, null="true", verbose_name="Observaciones")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null="True")
 
     created_at = models.DateField(auto_now_add=True)

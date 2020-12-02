@@ -17,15 +17,6 @@
   }
 </style>
 <body>
-{% if messages %}
-		<div class="w-100 position-absolute px-5 pt-5" style="z-index:100">
-		{% for message in messages %}
-			<div class="message px-5 alert alert-{{ message.tags }} text-center" role="alert">
-				{{ message }}
-			</div>
-		{% endfor %}
-		</div>
-	{% endif %}
 <div class="container">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
 	    <a class="navbar-brand" href="{% url 'dashboard:home' %}">LA COMUNIDAD</a>
@@ -73,9 +64,5 @@
 {% block scripts %}
 
 {% endblock %}
-<script>
- $('.message').delay(4000).fadeOut();
- $('input').attr('autocomplete', 'off')
-</script>
 </body>
 </html>

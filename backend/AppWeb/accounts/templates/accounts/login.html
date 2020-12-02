@@ -32,7 +32,7 @@
             <br>
         <!-- <div class="margin-top20 text-center">                    
           <a class="font-semi-bold" href="{% url 'accounts:password_reset' %}">{% trans 'Forgot your password?' %}</a>
-        </div>
+        </div-->
         <div class="margin-top20 text-center">
           ¿Eres nuevo?,
           <a
@@ -40,7 +40,7 @@
             href="{% url 'accounts:signup'%}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">
             {% trans 'register now' %}
           </a>
-        </div> -->
+        </div>
         </form>
     </div>
 </div>
