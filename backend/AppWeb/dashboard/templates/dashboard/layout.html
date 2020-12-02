@@ -1,27 +1,42 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<style>
+  .position-fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
 <body>
+{% if messages %}
+		<div class="w-100 position-absolute px-5 pt-5" style="z-index:100">
+		{% for message in messages %}
+			<div class="message px-5 alert alert-{{ message.tags }} text-center" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
+		</div>
+	{% endif %}
 <div class="container">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-	    <a class="navbar-brand" href="#">Brand</a>
+	    <a class="navbar-brand" href="{% url 'dashboard:home' %}">{% trans 'MEDICAL CLINIC' %}</a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 
 	    <div class="collapse navbar-collapse" id="navbarsExample09">
 	      <ul class="navbar-nav ml-auto">
-	        <li class="nav-item active">
-	          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Menu Item</a>
+	          <a class="nav-link text-capitalize" href="{% url 'dashboard:home' %}">{% trans 'search patient' %}</a>
 	        </li>
 	        {% if request.user.is_authenticated %}
 	        	<li class="nav-item dropdown">
@@ -32,34 +47,38 @@
 		          		{{ request.user.username }}
 		          	{% endif %}
 	          		</a>
-		          <div class="dropdown-menu" aria-labelledby="dropdown09">	            
-		            <a class="dropdown-item" href="#">Perfil</a>
-		            <a class="dropdown-item" href="{% url 'accounts:logout' %}">Cerrar sesion</a>
+		          <div class="dropdown-menu" aria-labelledby="dropdown09">
+		            <a class="dropdown-item" href="{% url 'accounts:logout' %}">{%trans 'Logout' %}</a>
 		          </div>
 		        </li>
 	        {% else %}
 		        <li class="nav-item">
-		          <a class="nav-link" href="{% url 'accounts:login' %}">Ingresar</a>
-		        </li>	         
+		          <a class="nav-link" href="{% url 'accounts:login' %}">{% trans 'Login' %}</a>
+		        </li>
 	        {% endif %}
 	      </ul>
 	    </div>
   	</nav>
-	<main role="main"> 
-{% block container %}
+	<main role="main">
+	{% block container %}
 
-{% endblock %}
+	{% endblock %}
 	</main>
 </div>
 <!-- /#wrapper -->
 
 <!-- Bootstrap core JavaScript -->
-<!-- JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="{% static 'bootstrap-4.3.1/dist/js/bootstrap.min.js'%}"></script> -->
 {% block scripts %}
 
 {% endblock %}
+<script>
+ $('.message').delay(4000).fadeOut();
+ $('input').attr('autocomplete', 'off')
+</script>
 </body>
 </html>

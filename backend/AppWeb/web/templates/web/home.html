@@ -1,13 +1,10 @@
 {% extends 'web/layout.html' %}
 {% load static %}
 {% block container %}
-<div >
-    <img src="{% static 'images/toneladas.jpg' %}" width="100%">
-
-    <div class="text-center pre">
-        <a class="boton" href="{% url 'accounts:login' %}">
-            Ingresar
-        </a>
-    </div>
-</div>  
+      <div class="text-center mx-auto mt-4 pb-5 mb-5">
+          <div class="row justify-content-center">
+              <a href="{% url 'accounts:login' %}">LOGIN</a>
+          </div>
+      </div>
+ 
 {% endblock %}

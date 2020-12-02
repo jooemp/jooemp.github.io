@@ -1,0 +1,19 @@
+{% extends 'dashboard/layout.html' %}
+{% load static %}
+{% load i18n %}
+{% block container %}
+<div class="m-5">
+  <h4 class="h2 text-capitalize">{% trans 'edit attention' %}: {{ speciality.name }}</h4>
+  <div>{% trans 'patient' %}: {{ patient.first_name }} {{ patient.last_name }}</div>
+  <div>{% trans 'age' %}: {{ patient.age }}</div>
+  <div>{% trans 'sex' %}: {{ patient.get_sex_display|default:'' }}</div>
+  <div>{% trans 'weight' %}: {{ patient.weight|default:'' }}</div>
+  <div>{% trans 'stature' %}: {{ patient.stature|default:'' }}</div>
+  <div>{% trans 'blood pressure' %}: {{ patient.blood_pressure|default:'' }}</div>
+  <div>{% trans 'allergic' %}: {{ patient.allergic|default:'' }}</div>
+  <div>{% trans 'notes' %}: {{ patient.notes|default:'' }}</div>
+  <hr/>
+  {% trans "Save and mark like attended" as btntext %}
+  {% include 'common/hook/form.html' with submit_text=btntext %}
+</div>
+{% endblock %}

@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'common.apps.CommonConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'core.apps.CoreConfig',
+    'common.apps.CommonConfig',
     'accounts.apps.AccountsConfig',
     'dashboard.apps.DashboardConfig',
     'web.apps.WebConfig',
@@ -84,18 +85,18 @@ WSGI_APPLICATION = 'AppWeb.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'da06c9g77gk8i3',
-        'USER': 'dpbenioaztrmsx',
-        'PASSWORD': '44063bffbdfa9ca35f62f0c445a880bc69816c149e4aaafee5ae5a4437502425',
-        'HOST': 'ec2-54-237-135-248.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'da06c9g77gk8i3',
+    #     'USER': 'dpbenioaztrmsx',
+    #     'PASSWORD': '44063bffbdfa9ca35f62f0c445a880bc69816c149e4aaafee5ae5a4437502425',
+    #     'HOST': 'ec2-54-237-135-248.compute-1.amazonaws.com',
+    #     'PORT': '5432',
+    # }
 }
 
 
@@ -144,7 +145,7 @@ INTERNAL_IPS = [
 
 # Django auth
 
-LOGIN_REDIRECT_URL = '/panel'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
@@ -171,7 +172,7 @@ REST_FRAMEWORK = {
 
 FIXTURES_PATH = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), '../demo')
 
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-CONTACT_EMAIL = 'atixbot@gmail.com'
+CONTACT_EMAIL = 'lacomunidad@gmail.com'

@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-24 01:03-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:7
+msgid "male"
+msgstr "masculino"
+
+#: models.py:8
+msgid "female"
+msgstr "femenino"
+
+#: models.py:11
+msgid "waiting"
+msgstr "en espera"
+
+#: models.py:12
+msgid "attended"
+msgstr "atendido"
+
+#: models.py:47
+msgid "dni"
+msgstr "dni"
+
+#: models.py:48
+msgid "first name"
+msgstr "nombres"
+
+#: models.py:49
+msgid "last name"
+msgstr "apellidos"
+
+#: models.py:50
+msgid "district"
+msgstr "distrito"
+
+#: models.py:51
+msgid "date of birth"
+msgstr "fecha de nacimiento"
+
+#: models.py:52
+msgid "sex"
+msgstr "sexo"
+
+#: models.py:53
+msgid "weight"
+msgstr "peso"
+
+#: models.py:54
+msgid "stature"
+msgstr "talla"
+
+#: models.py:55
+msgid "blood pressure"
+msgstr "presión sanguinea"
+
+#: models.py:56
+msgid "allergic"
+msgstr "alergias"
+
+#: models.py:57
+msgid "notes"
+msgstr "notas"
+
+#: models.py:75
+msgid "patient"
+msgstr "paciente"
+
+#: models.py:76
+msgid "patients"
+msgstr "pacientes"
+
+#: models.py:80
+msgid "name"
+msgstr "nombre"
+
+#: models.py:86
+msgid "speciality"
+msgstr "especialidad"
+
+#: models.py:87
+msgid "specialities"
+msgstr "especialidades"
+
+#: models.py:93
+msgid "state"
+msgstr "estado"
+
+#: models.py:94
+msgid "diagnostic"
+msgstr "diagnostico"
+
+#: models.py:95
+msgid "treatment"
+msgstr "tratamiento"
+
+#: models.py:102
+msgid "attention"
+msgstr "consulta"
+
+#: models.py:103
+msgid "attentions"
+msgstr "consultas"
+

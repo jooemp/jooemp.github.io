@@ -3,8 +3,8 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
-{% trans 'You are logged like ' %}
-    <b>{{ user.username }}</b>, <a href="{% url 'accounts:logout' %}">logout ?</a>
+{% trans 'You are logged like' %}
+    <b>{{ user.username }}</b>, <a href="{% url 'accounts:logout' %}">{% trans 'logout ?' %}</a>
 {% else %}
 <div class="card fat">
     <div class="card-body">
@@ -30,17 +30,17 @@
               </button>
             </div>
             <br>
-        <!--div class="margin-top20 text-center">                    
-          <a class="font-semi-bold" href="{% url 'accounts:password_reset' %}">¿Olvidaste tu contraseña noob?</a>
+        <!-- <div class="margin-top20 text-center">                    
+          <a class="font-semi-bold" href="{% url 'accounts:password_reset' %}">{% trans 'Forgot your password?' %}</a>
         </div>
         <div class="margin-top20 text-center">
           ¿Eres nuevo?,
           <a
             class="font-semi-bold"
             href="{% url 'accounts:signup'%}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">
-            registrate
+            {% trans 'register now' %}
           </a>
-        </div-->
+        </div> -->
         </form>
     </div>
 </div>
