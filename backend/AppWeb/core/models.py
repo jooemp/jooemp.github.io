@@ -56,11 +56,21 @@ TYPE_PRODUCT = (
 class Product(models.Model):
     name = models.IntegerField('Producto', choices=TYPE_PRODUCT, default=6)
     weight = models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Peso")
+    quantity = models.IntegerField('Cantidad' , blank=True, null=True, default=0)
     notes = models.CharField(max_length=255, null="true", verbose_name="Observaciones")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null="True")
 
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
-    
+        return TYPE_PRODUCT[self.name-1][1]
+
+class Accumulate(models.Model):
+    day = models.DateField()
+    clothes = models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Ropa")
+    viveres = models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Viveres")
+    agricola = models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Agricola")
+    toys = models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Juguetes")
+    bicycle = models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Bicicletas")
+    bicycle_cant = models.IntegerField(blank=True, null=True, default=0, verbose_name="Cantidad bicicletas")
+    others = models.DecimalField(decimal_places=2, max_digits=10, verbose_name="Otros")
