@@ -30,12 +30,31 @@ def home(request):
             quantity=0
         donation = Product.objects.create(
             name=product, weight=weight, quantity=quantity, notes=notes, user= request.user)
-        
         return redirect(reverse('dashboard:home'))
 
     types = models.TYPE_PRODUCT
     today = date.today()
+    ropa = Product.objects.filter(created_at=today, name=1).aggregate(Sum('weight'))
+    ropa = 0 if ropa['weight__sum'] == None else ropa['weight__sum']
+    vivere = Product.objects.filter(created_at=today, name=2).aggregate(Sum('weight'))
+    vivere = 0 if vivere['weight__sum'] == None else vivere['weight__sum']
+
+    agricola = Product.objects.filter(created_at=today, name=3).aggregate(Sum('weight'))
+    agricola = 0 if agricola['weight__sum'] == None else agricola['weight__sum']
+
+    juguete = Product.objects.filter(created_at=today, name=4).aggregate(Sum('weight'))
+    juguete = 0 if juguete['weight__sum'] == None else juguete['weight__sum']
+
+    bicicleta = Product.objects.filter(created_at=today, name=5).aggregate(Sum('weight'))
+    bicicleta = 0 if bicicleta['weight__sum'] == None else bicicleta['weight__sum']
+    qbici = Product.objects.filter(created_at=today, name=5).aggregate(Sum('quantity'))
+    qbici = 0 if qbici['quantity__sum'] == None else qbici['quantity__sum']
+    otro = Product.objects.filter(created_at=today, name=6).aggregate(Sum('weight'))
+    otro = 0 if otro['weight__sum'] == None else otro['weight__sum']
+
     acumm = Accumulate.objects.all()
+    toneladas = Product.objects.all().aggregate(Sum('weight'))
+    toneladas2020 = toneladas['weight__sum']
     return render(request, 'dashboard/home.html', locals())
 
 def close_day(request):
@@ -48,19 +67,18 @@ def close_day(request):
     agricola = Product.objects.filter(created_at=today, name=3).aggregate(Sum('weight'))
     agricola = 0 if agricola['weight__sum'] == None else agricola['weight__sum']
 
-    import pdb; pdb.set_trace()
     juguete = Product.objects.filter(created_at=today, name=4).aggregate(Sum('weight'))
     juguete = 0 if juguete['weight__sum'] == None else juguete['weight__sum']
 
     bicicleta = Product.objects.filter(created_at=today, name=5).aggregate(Sum('weight'))
     bicicleta = 0 if bicicleta['weight__sum'] == None else bicicleta['weight__sum']
     qbici = Product.objects.filter(created_at=today, name=5).aggregate(Sum('quantity'))
-    
+    qbici = 0 if qbici['quantity__sum'] == None else qbici['quantity__sum']
     otro = Product.objects.filter(created_at=today, name=6).aggregate(Sum('weight'))
     otro = 0 if otro['weight__sum'] == None else otro['weight__sum']
     accum = Accumulate.objects.create(
         day=today, clothes=ropa, viveres=vivere, agricola=agricola, 
-        toys=juguete, bicycle=bicicleta, bicycle_cant=qbici['quantity__sum'], 
+        toys=juguete, bicycle=bicicleta, bicycle_cant=qbici, 
         others=otro)
         
     return render(request, 'dashboard/home.html', locals())
