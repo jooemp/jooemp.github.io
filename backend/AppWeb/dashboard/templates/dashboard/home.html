@@ -108,11 +108,18 @@
 </div>
 
 {% if user.is_superuser %}  
-<div class="position-fixed-bottom bg-white text-center border-top">
-  <a class="btn btn-secondary my-2" href="{% url 'dashboard:close_day' %}">
-    <i class="fas fa-plus"></i>
-    Cerrar Día
-  </a>
+<div class="bg-white text-center border-top">
+  <form action="{% url 'dashboard:close_day' %}" method="POST" class="card card-sm">
+    {% csrf_token %}
+    <div class="form-group row">
+      <label for="quantity" class="col-sm-2 col-form-label">Fecha</label>
+      <input type="text" class="col-sm-3 col-form-label" name="dateC" id="dateC">
+      <button class="col-sm-3 btn btn-secondary ">
+        <i class="fas fa-plus"></i>
+        Cerrar Día
+      </button>
+    </div>
+  </form>
 </div>
 {% endif %}
 {% endblock %}
