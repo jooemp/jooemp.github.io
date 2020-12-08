@@ -60,7 +60,7 @@ class Product(models.Model):
     notes = models.CharField(max_length=255, null="true", verbose_name="Observaciones")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null="True")
 
-    created_at = models.DateField(auto_now_add=True)
+    created_at = models.DateField()
 
     def __str__(self):
         return TYPE_PRODUCT[self.name-1][1]

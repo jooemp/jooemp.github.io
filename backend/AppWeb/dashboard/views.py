@@ -22,6 +22,7 @@ from . import forms
 @login_required
 def home(request):
     if request.POST:
+        dateR = request.POST.get('dateR')
         product = request.POST.get('productsA')
         weight = request.POST.get('weight')
         quantity = request.POST.get('quantity')
@@ -29,11 +30,13 @@ def home(request):
         if quantity=='':
             quantity=0
         donation = Product.objects.create(
-            name=product, weight=weight, quantity=quantity, notes=notes, user= request.user)
+            created_at=dateR ,name=product, weight=weight, quantity=quantity, notes=notes, user= request.user)
         return redirect(reverse('dashboard:home'))
 
     types = models.TYPE_PRODUCT
     today = date.today()
+    fechactual = today.isoformat()
+    
     ropa = Product.objects.filter(created_at=today, name=1).aggregate(Sum('weight'))
     ropa = 0 if ropa['weight__sum'] == None else ropa['weight__sum']
     vivere = Product.objects.filter(created_at=today, name=2).aggregate(Sum('weight'))

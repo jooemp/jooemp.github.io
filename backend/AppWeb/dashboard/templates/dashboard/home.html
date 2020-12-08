@@ -35,6 +35,17 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <form action="." method="POST" class="card card-sm" style="padding: 2rem;text-align: left;">
             {%csrf_token%}
+            {% if user.is_staff or user.is_superuser%}
+            <div class="form-group">
+              <label for="dateR">Fecha</label>
+              <input type="date" step="any" class="form-control" value="{{ fechactual }}" name="dateR" id="dateR">
+            </div>
+            {% else %}
+            <div class="form-group">
+              <label for="dateR">Fecha</label>
+              <input type="date" step="any" class="form-control" value="{{ fechactual }}" name="dateR" id="dateR" disabled>
+            </div>
+            {% endif %}
             <div class="form-group">
               <label for="productsA">Producto</label>
               <select class="form-control" name="productsA" id="productsA" required>
